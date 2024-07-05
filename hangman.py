@@ -4,12 +4,15 @@
 # guess the word.
 
 import random
+from list import words_list
+
 
 
 # List of all possible drawings for Hangman
 def show_hangman(tries):
     hangman_drawings = [
-    ''' |
+    '''
+        |
         |
         |
         |
@@ -19,7 +22,8 @@ def show_hangman(tries):
         |
         ============
     ''',
-    ''' =========
+    '''
+        =========
         |       |
         |       |
         |
@@ -30,7 +34,8 @@ def show_hangman(tries):
         |
         ============
     ''',
-    ''' =========
+    '''
+        =========
         |       |
         |       |
         |       O
@@ -41,7 +46,8 @@ def show_hangman(tries):
         |
         ============
     ''',
-    ''' =========
+    '''
+        =========
         |       |
         |       |
         |       O
@@ -52,7 +58,8 @@ def show_hangman(tries):
         |
         ============
     ''',
-    ''' =========
+    '''
+        =========
         |       |
         |       |
         |       O
@@ -63,7 +70,8 @@ def show_hangman(tries):
         |
         ============
     ''',
-    ''' =========
+    '''
+        =========
         |       |
         |       |
         |       O
@@ -85,7 +93,8 @@ def show_hangman(tries):
         |
         ============
     ''',
-    ''' =========
+    '''
+        =========
         |       |
         |       |
         |       O
@@ -100,12 +109,9 @@ def show_hangman(tries):
     print(hangman_drawings[tries])
 
 
-words = ['science', 'deadlock', 'starvation', 'kickboxing']
-
-
 # Chose a random word. For future: use a dictionary.
 def choose_word():
-    word = random.choice(words)
+    word = random.choice(words_list)
     return word.upper()
 
 
