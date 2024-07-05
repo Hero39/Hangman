@@ -19,7 +19,15 @@ def split_word(word):
 word = split_word(choose_word())
 print(word)
 
-for x in range(len(word)):
-    word[x] = '_'
+# Need an extra variable to remember the word!!
 
-print(word)
+
+# Replaces the letters with '_'
+def replace_letters(word):
+    for x in range(len(word)):
+        word[x] = '_'
+    return word
+
+
+
+print(replace_letters(word))
