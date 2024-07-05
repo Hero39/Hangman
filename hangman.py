@@ -6,6 +6,104 @@
 
 import random
 
+# List of all possible drawings for Hangman
+hangman_drawings = [
+'''
+|
+|
+|
+|
+|
+|
+|
+|
+============
+''',
+'''
+=========
+|       |
+|       |
+|
+|
+|
+|
+|
+|
+============
+''',
+'''
+=========
+|       |
+|       |
+|       O
+|
+|
+|
+|
+|
+============
+''',
+'''
+=========
+|       |
+|       |
+|       O
+|       |
+|       |
+|
+|
+|
+============
+''',
+'''
+=========
+|       |
+|       |
+|       O
+|       |\\
+|       |
+|
+|
+|
+============
+''',
+'''
+=========
+|       |
+|       |
+|       O
+|      /|\\
+|       |
+|
+|
+|
+============
+''',
+'''
+=========
+|       |
+|       |
+|       O
+|      /|\\
+|       |
+|        \\
+|
+|
+============
+''',
+'''
+=========
+|       |
+|       |
+|       O
+|      /|\\
+|       |
+|      / \\
+|
+|
+============
+'''
+]
 words = ['science', 'deadlock', 'starvation', 'kickboxing']
 
 # Chose a random word. For future: use a dictionary.
@@ -31,3 +129,6 @@ def replace_letters(word):
 print(replace_letters(word))
 
 print(' '.join(word))
+
+for draw in hangman_drawings:
+    print(draw)
