@@ -28,6 +28,6 @@ def replace_letters(word):
         word[x] = '_'
     return word
 
-
-
 print(replace_letters(word))
+
+print(' '.join(word))
