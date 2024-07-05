@@ -124,12 +124,12 @@ def game(word):
     tries_left = 0
 
     print("Welcome to Hangman!")
-    print("You can guess 7 letters wrong before you lose.")
+    print("You can guess 6 letters wrong before you lose.")
     print("Good Luck!")
     show_hangman(tries_left)
     print(word_completion)
 
-    while not word_is_guessed and tries_left < 7:
+    while not word_is_guessed and tries_left <= 6:
         guess = input("Guess the letter or word: ").upper()
 
         # Guess is a word
@@ -162,10 +162,7 @@ def game(word):
                 for index in indices:
                     word_as_list[index] = guess
 
-                print(word_as_list)
-
                 word_completion = "".join(word_as_list)
-                print(word_completion)
 
                 # Guess completes the word?
                 if "_" not in word_completion:
