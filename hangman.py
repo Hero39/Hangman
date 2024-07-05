@@ -105,7 +105,7 @@ def show_hangman(tries):
         ============
     '''
     ]
-    return hangman_drawings[tries]
+    print(hangman_drawings[tries])
 
 words = ['science', 'deadlock', 'starvation', 'kickboxing']
 
@@ -120,12 +120,11 @@ def game(word):
     guessed_letters = []
     guessed_words = []
     tries_left = 0
-    word_as_list = [*word]
 
     print("Welcome to Hangman!")
     print("You can guess 7 letters wrong before you lose.")
     print("Good Luck!")
-    print(show_hangman(tries_left))
+    show_hangman(tries_left)
     print(word_completion)
 
     while not word_is_guessed and tries_left < 7:
@@ -139,41 +138,40 @@ def game(word):
             elif guess != word:
                 print(f"No! {guess} is not the word!")
                 guessed_words.append(guess)
+                tries_left += 1
             else:
                 word_is_guessed = True
-                print(f"Good Job! {guess} was the word!")
+                word_completion = word
 
         # Guess is a letter
         elif len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
                 print("You already guessed this letter!")
-            elif guess not in word_as_list:
+            elif guess not in word:
                 print("")
                 tries_left += 1
                 guessed_letters.append(guess)
             else:
                 print(f"Nice! the letter {guess} is in the word")
-                # get all indices of the word
-                # the indices that contain the guessed letter will be replaced with the correct letter
-                indices = [i for i, x in enumerate(word_as_list) if x == guess]
+                guessed_letters.append(guess)
+                word_as_list = [*word_completion]
+                indices = [i for i, x in enumerate(word) if x == guess]
+
                 for index in indices:
                     word_as_list[index] = guess
+
+                print(word_as_list)
+
                 word_completion = "".join(word_as_list)
+                print(word_completion)
 
                 # Guess completes the word?
                 if "_" not in word_completion:
                     word_is_guessed = True
-                    print("Good job! You guessed the word!")
-
-                guessed_letters.append(guess)
-
-        # If the guessed word is too short
-        elif len(guess) > 1 and len(guess) != len(word):
-            print("Length of input is not equal to the length of the word!")
 
         # Guess contains non-alphabetic symbols
         else:
-            print("Input contains symbols that are not in the alphabet!")
+            print("Guess is not valid")
 
         show_hangman(tries_left)
         print(word_completion)
@@ -181,5 +179,20 @@ def game(word):
         # if guess_message not in 
         # If letter is wrong: add 1 with tries and display the new stage
 
-while True:
-    game(choose_word())
+    if word_is_guessed:
+        print("Congratulations! You guessed the word :)")
+    else:
+        print(f"You lost! The word was {word}")
+
+def main():
+    word = choose_word()
+    game(word)
+
+    new_round = input("Play again? (Y/N)").upper()
+
+    while new_round == "Y" or new_round == "YES":
+        word = choose_word()
+        game(word)
+
+if __name__ == "__main__":
+    main()
