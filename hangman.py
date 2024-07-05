@@ -3,14 +3,13 @@
 # The computer picks a random word from a list and the player has to
 # guess the word.
 
-
 import random
+
 
 # List of all possible drawings for Hangman
 def show_hangman(tries):
     hangman_drawings = [
-    '''
-        |
+    ''' |
         |
         |
         |
@@ -20,8 +19,7 @@ def show_hangman(tries):
         |
         ============
     ''',
-    '''
-        =========
+    ''' =========
         |       |
         |       |
         |
@@ -32,8 +30,7 @@ def show_hangman(tries):
         |
         ============
     ''',
-    '''
-        =========
+    ''' =========
         |       |
         |       |
         |       O
@@ -44,8 +41,7 @@ def show_hangman(tries):
         |
         ============
     ''',
-    '''
-        =========
+    ''' =========
         |       |
         |       |
         |       O
@@ -56,8 +52,7 @@ def show_hangman(tries):
         |
         ============
     ''',
-    '''
-        =========
+    ''' =========
         |       |
         |       |
         |       O
@@ -68,8 +63,7 @@ def show_hangman(tries):
         |
         ============
     ''',
-    '''
-        =========
+    ''' =========
         |       |
         |       |
         |       O
@@ -80,8 +74,7 @@ def show_hangman(tries):
         |
         ============
     ''',
-    '''
-        =========
+    ''' =========
         |       |
         |       |
         |       O
@@ -92,8 +85,7 @@ def show_hangman(tries):
         |
         ============
     ''',
-    '''
-        =========
+    ''' =========
         |       |
         |       |
         |       O
@@ -107,13 +99,17 @@ def show_hangman(tries):
     ]
     print(hangman_drawings[tries])
 
+
 words = ['science', 'deadlock', 'starvation', 'kickboxing']
+
 
 # Chose a random word. For future: use a dictionary.
 def choose_word():
     word = random.choice(words)
     return word.upper()
 
+
+# The game
 def game(word):
     word_completion = "_" * len(word)
     word_is_guessed = False
@@ -172,17 +168,17 @@ def game(word):
         # Guess contains non-alphabetic symbols
         else:
             print("Guess is not valid")
-
         show_hangman(tries_left)
         print(word_completion)
 
-        # if guess_message not in 
+        # if guess_message not in
         # If letter is wrong: add 1 with tries and display the new stage
 
     if word_is_guessed:
         print("Congratulations! You guessed the word :)")
     else:
         print(f"You lost! The word was {word}")
+
 
 def main():
     word = choose_word()
@@ -193,6 +189,7 @@ def main():
     while new_round == "Y" or new_round == "YES":
         word = choose_word()
         game(word)
+
 
 if __name__ == "__main__":
     main()
